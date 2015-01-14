@@ -1,16 +1,16 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html lang="zh_cn">
-  <meta charset="utf-8">
-  <body>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+{% extends "base.html" %}
+
+{% block title %}登录界面{% endblock %}
+
+{% block conten %}
+    {% block header %}
     <div align="center">
       <p>
-        登陆
+      登陆
       </p>
+    </div>
+    {% endblock %}
+    {% block main %}
       <form action="" method="POST" >
       {% csrf_token %}
         <label for="name">
@@ -27,6 +27,6 @@
         <input type="submit" value="登陆">
         <input type="submit" name="register" value="注册"> 
       </form>
-    </div>
-  </body>
-</html>
+    {% endblock %}
+      
+{% endblock %}

@@ -2,12 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ STATIC_URL }}css/local.css">
     <script type="text/javascript" src="{{ STATIC_URL }}js/local.js"></script>
     <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
 </head>
 <body background="http://jaccorot.qiniudn.com/{{current_time}}.jpg">
-
+{% block content %}
+            {% block header %}
+            {% endblock %}
+            {% block main %}
+            {% endblock %}
+{% endblock %}
 </body>
 </html>
