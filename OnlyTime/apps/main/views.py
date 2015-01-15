@@ -23,7 +23,7 @@ def register(request):
         #user = User(name=userName, password=passWord)
         user = User.objects.create_user(username= userName, password= passWord)
         user.save()  
-        return render_to_response("register_success.html", { "user": user})  
+        return render_to_response("register_result.html", { "user": user})  
     return render_to_response("register.html", context_instance=RequestContext(request))
 
 def login(request):
@@ -38,10 +38,10 @@ def login(request):
             passWord = request.POST['password']  
             user = authenticate(username = userName, password = passWord)
             if not user: 
-                return render_to_response("login_failed.html", {"msg":"用户名或者密码错误哦~~"})
-            return render_to_response("login_success.html", { "user": user})
+                return render_to_response("login_result.html", {"msg":"用户名或者密码错误哦~~"})
+            return render_to_response("login_result.html", { "user": user})
     return render_to_response('login.html', context_instance=RequestContext(request)) 
 
 def alogout(request):
     logout(request)
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/register')

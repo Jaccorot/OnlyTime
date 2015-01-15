@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}css/local.css">
     <script type="text/javascript" src="{{ STATIC_URL }}js/local.js"></script>
     <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
+    {% block header_link %}{% endblock %}
 </head>
 <body background="http://jaccorot.qiniudn.com/{{current_time}}.jpg">
 {% block content %}

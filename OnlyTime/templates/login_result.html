@@ -1,0 +1,19 @@
+
+{% block title %}登录结果{% endblock %}
+    {% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+        {% block main %}
+            {% if user %}
+            <div align="center">
+                 <p>欢迎：{{ user.username}}</>
+            </div>
+            {% else %}
+            <p>{{msg}}</p>
+            {% endif %}
+        {% endblock %}
+    {% endblock %}
+{% endblock %}
