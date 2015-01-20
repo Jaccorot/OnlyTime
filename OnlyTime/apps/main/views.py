@@ -9,12 +9,17 @@ from django.contrib.auth import authenticate, login
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect
 from django.template.context import RequestContext
+from django.views.generic import TemplateView
+from django.utils import timezone
 
 
-def index_page(request):
-    now = datetime.datetime.now()
-    current_time = now.strftime('%Y%m%d')
-    return render(request,'base.html',{'current_time':current_time})
+class IndexView(TemplateView):
+    template_name = "base.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context['current_time'] = timezone.localtime(timezone.now())
+        return context
 
 
 def register(request):
