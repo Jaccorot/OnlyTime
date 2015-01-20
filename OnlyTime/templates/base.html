@@ -7,12 +7,12 @@
     <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
     {% block header_link %}{% endblock %}
 </head>
-<body background="http://jaccorot.qiniudn.com/{{current_time}}.jpg">
+<body background="http://jaccorot.qiniudn.com/{{ current_time|date:'Ymd' }}.jpg">
 {% block content %}
-            {% block header %}
-            {% endblock %}
-            {% block main %}
-            {% endblock %}
+
+{% block header %}{% endblock %}
+{% block main %}{% endblock %}
+
 {% endblock %}
 </body>
 </html>
