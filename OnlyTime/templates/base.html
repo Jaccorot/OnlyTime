@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% endblock %}</title>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/local.js"></script>
-    <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
     {% block header_link %}{% endblock %}
 </head>
 <body background="http://jaccorot.qiniudn.com/{{ current_time|date:'Ymd' }}.jpg">
@@ -14,7 +15,11 @@
 {% block main %}{% endblock %}
 
 {% endblock %}
+
 {% block footer_js %}{% endblock %}
 
+
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>
+    {# <script type="text/javascript" src="{{ STATIC_URL }}js/local.js"></script> #}
 </body>
 </html>

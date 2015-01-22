@@ -7,30 +7,36 @@
 {% endblock %}
 
 {% block content %}
-    {% block header %}
-    <div align="center">
-      <p>
-      登陆
-      </p>
+    <div class="continer">
+        <div class="row">
+            <div class="col-md-3 col-md-offset-5">
+                <h2>用户登录</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-4">
+                <form action="" method="POST" role="form" class="form-horizontal">
+                {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_name" class="col-sm-3 control-label">用户名:</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" id="id_name" placeholder="用户名" name="name" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_password" class="col-sm-3 control-label">密码:</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="password" d="id_password" placeholder="密码" name="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-5 col-sm-7">
+                            <input type="submit" class="btn btn-success" value="登录">
+                            <a href="#">注册用户</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    {% endblock %}
-    {% block main %}
-      <form action="" method="POST" >
-      {% csrf_token %}
-        <label for="name">
-         用户名：
-        </label>
-        <input type="text"  name="name" >
-        <br>
-        <label for="name">
-          &nbsp;&nbsp;密码：
-        </label>
-        <input type="password" name="password">
-        <br>
-        <br>
-        <input type="submit" value="登陆">
-        <input type="submit" name="register" value="注册"> 
-      </form>
-    {% endblock %}
-      
 {% endblock %}
