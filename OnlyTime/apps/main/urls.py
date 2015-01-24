@@ -10,5 +10,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^index/', views.IndexView.as_view(), name='index_page'),
     url(r'^login/', 'django.contrib.auth.views.login', name='login'),
+    url(r'^logout/', 'django.contrib.auth.views.logout', name='logout'),
     url(r'^register/',views.register, name='register'),
 )
