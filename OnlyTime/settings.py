@@ -98,4 +98,5 @@ TEMPLATE_DIRS = (
     location('templates'),
 )
 
-LOGIN_REDIRECT_URL=reverse('index_page')
+LOGIN_REDIRECT_URL = reverse('index_page')
+LOGIN_URL = reverse('login')
