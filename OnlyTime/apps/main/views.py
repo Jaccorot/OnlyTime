@@ -11,6 +11,9 @@ from django.http import HttpResponseRedirect
 from django.template.context import RequestContext
 from django.views.generic import TemplateView, CreateView
 from django.utils import timezone
+from django.core.urlresolvers import reverse
+
+from .froms import CreateUserForm
 
 
 class IndexView(TemplateView):
@@ -24,12 +27,16 @@ class IndexView(TemplateView):
 
 class RegisterView(TemplateView):
     template_name = 'register.html'
+    form_class = CreateUserForm
 
     def form_valid(self, form):
-        pass
+        self.object = form.save(commit=False)
+        self.object.set_password(form.clean_data['password'])
+        self.object = form.save()
+        return super(RegisterView, self).form_valid(form)
 
     def get_success_url(self):
-        pass
+        return reverse('login')
 
 
 def register(request):
