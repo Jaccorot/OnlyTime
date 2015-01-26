@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate, login
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect
 from django.template.context import RequestContext
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 from django.utils import timezone
 
 
@@ -20,6 +20,16 @@ class IndexView(TemplateView):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['current_time'] = timezone.localtime(timezone.now())
         return context
+
+
+class RegisterView(TemplateView):
+    template_name = 'register.html'
+
+    def form_valid(self, form):
+        pass
+
+    def get_success_url(self):
+        pass
 
 
 def register(request):
