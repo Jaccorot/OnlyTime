@@ -14,8 +14,6 @@ from django.views.generic import TemplateView, CreateView
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 
-#from .forms import CreateUserForm
-
 
 class IndexView(TemplateView):
     template_name = "index.html"
@@ -30,25 +28,8 @@ class RegisterView(CreateView):
     template_name = 'register.html'
     form_class = UserCreationForm
 
-    #def form_valid(self, form):
-    #    self.object = form.save(commit=False)
-    #    self.object.set_password(form.clean_data['password'])
-    #    self.object = form.save()
-    #    return super(RegisterView, self).form_valid(form)
-
     def get_success_url(self):
         return reverse('login')
-
-
-def register(request):
-    if request.method == 'POST':
-        userName = request.POST['name']  
-        passWord = request.POST['password']  
-        #user = User(name=userName, password=passWord)
-        user = User.objects.create_user(username= userName, password= passWord)
-        user.save()  
-        return render_to_response("register_result.html", { "user": user})  
-    return render_to_response("register.html", context_instance=RequestContext(request))
 
 
 def login(request):
