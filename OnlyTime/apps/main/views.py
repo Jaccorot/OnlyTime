@@ -5,6 +5,7 @@ import datetime
 
 from django.shortcuts import render,render_to_response
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect
@@ -13,7 +14,7 @@ from django.views.generic import TemplateView, CreateView
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 
-from .froms import CreateUserForm
+#from .forms import CreateUserForm
 
 
 class IndexView(TemplateView):
@@ -25,15 +26,15 @@ class IndexView(TemplateView):
         return context
 
 
-class RegisterView(TemplateView):
+class RegisterView(CreateView):
     template_name = 'register.html'
-    form_class = CreateUserForm
+    form_class = UserCreationForm
 
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.set_password(form.clean_data['password'])
-        self.object = form.save()
-        return super(RegisterView, self).form_valid(form)
+    #def form_valid(self, form):
+    #    self.object = form.save(commit=False)
+    #    self.object.set_password(form.clean_data['password'])
+    #    self.object = form.save()
+    #    return super(RegisterView, self).form_valid(form)
 
     def get_success_url(self):
         return reverse('login')
