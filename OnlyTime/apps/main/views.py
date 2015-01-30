@@ -30,23 +30,3 @@ class RegisterView(CreateView):
 
     def get_success_url(self):
         return reverse('login')
-
-
-def login(request):
-    if request.method == 'POST':
-        if 'register' in request.POST:
-            return HttpResponseRedirect("/register")
-
-        else:
-            userName = request.POST['name'] 
-            passWord = request.POST['password']  
-            user = authenticate(username = userName, password = passWord)
-            if not user: 
-                return render_to_response("login_result.html", {"msg":"用户名或者密码错误哦~~"})
-            return render_to_response("login_result.html", { "user": user})
-    return render_to_response('login.html', context_instance=RequestContext(request)) 
-
-
-def alogout(request):
-    logout(request)
-    return HttpResponseRedirect('/register')
