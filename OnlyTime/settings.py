@@ -7,7 +7,6 @@ https://docs.djangoproject.com/en/1.6/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
-from django.core.urlresolvers import reverse
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -39,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_forms_bootstrap',
     'OnlyTime.apps.main',
 )
 
@@ -98,5 +98,5 @@ TEMPLATE_DIRS = (
     location('templates'),
 )
 
-LOGIN_REDIRECT_URL = reverse('index_page')
-LOGIN_URL = reverse('login')
+LOGIN_REDIRECT_URL = 'index_page'
+LOGIN_URL = 'login'
